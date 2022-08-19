@@ -1,0 +1,12 @@
+{
+    "login":"Acceder",
+    "register":"Crear una cuenta",
+    "register.button":"Registrarse",
+    "email":"Correo electrónico",
+    "password":"Contraseña",
+    "createAccount":"Crear una cuenta",
+    "name":"Nombre",
+    "already an account?": "¿Ya tienes una cuenta?",
+    "name.error": "El nombre es obligatorio",
+    "userNotFound": "Usuario no encontrado"
+}
