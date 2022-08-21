@@ -1,7 +1,7 @@
 import { AppRouter } from "./router";
 import { AppTheme } from "./theme";
 
-export const JournalApp = () => {
+export const App = () => {
   return (
       <AppTheme>
         <AppRouter />

@@ -1,16 +1,11 @@
-import i18next from 'i18next'
-
+import { FirebaseAuth } from '../config'
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
 } from 'firebase/auth'
-import { FirebaseAuth } from '../config'
 
-// TODO
-const firebaseErrorMapping = {
-    'Firebase: Error (auth/user-not-found).': i18next.t('userNotFound'),
-}
+// TODO - Map firebase error to actual error messages.
 
 export const loginUserWithEmailPassword = async ({ email, password }) => {
     try {

@@ -17,8 +17,11 @@ export const JournalPage = () => {
 
     return (
         <JournalLayout>
+
+            {/* View components */}
             {!!active ? <NoteView /> : <NothingSelectedView />}
 
+            {/* Floating buttons */}
             <IconButton
                 size="large"
                 sx={{

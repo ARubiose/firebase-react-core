@@ -1,7 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { FirebaseDB } from '../config'
 
-export const getDocsFromPath = async (path = '') => {
+export const getDocsFromPath = async (path = null) => {
     if (!path) throw new Error('Blank path')
 
     const collectionRef = collection(FirebaseDB, path)

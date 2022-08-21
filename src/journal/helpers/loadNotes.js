@@ -1,5 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore/lite'
-import { FirebaseDB } from '../firebase/config'
+import { FirebaseDB } from '../../firebase/config'
+
 
 export const loadNotes = async (uid = '') => {
     if (!uid) throw new Error('uid does not exists')

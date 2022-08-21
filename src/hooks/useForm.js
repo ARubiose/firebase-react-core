@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 
+/**
+ * 
+ * @param {*} initialState 
+ * @param {*} formValidations 
+ * @returns 
+ */
 export const useForm = ( initialState = {}, formValidations = {}) => {
     
     const [formState, setFormState] = useState(initialState);

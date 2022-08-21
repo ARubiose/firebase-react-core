@@ -15,8 +15,6 @@ const initialState = {
     errorMessage: null
 }
 
-// In case the reducers section grows to much, extract logic into a function.
-
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {...initialState},
@@ -40,7 +38,7 @@ export const authSlice = createSlice({
         },
 
         checkingCredentials: ( state ) => {
-            state.status        = statusEnum.checkingAuthentication;
+            state.status        = statusEnum.checkingAuthentication; 
         }
     },
 })

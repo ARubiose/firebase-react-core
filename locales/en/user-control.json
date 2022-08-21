@@ -1,11 +1,11 @@
 {
-    "email":"Email",
-    "password":"Password",
-    "name":"Name",
-    "login":"Login",
-    "register":"Create an account",
-    "register.button":"Register",
-    "createAccount":"Create an account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "login": "Login",
+    "register": "Create an account",
+    "register.button": "Register",
+    "createAccount": "Create an account",
     "already an account?": "Do you already have an account?",
     "name.error": "The name is mandatory.",
     "userNotFound": "User not found"
