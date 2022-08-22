@@ -1,4 +1,3 @@
-import { onAuthStateChanged } from 'firebase/auth'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Firebase support
@@ -11,7 +10,6 @@ import {
 
 // Store actions
 import { login, logout, checkingCredentials } from '../authStore/authSliceHook'
-import { FirebaseAuth } from '../config'
 
 /**
  * Basic hook for Firebase-based authentication
@@ -34,7 +32,7 @@ export const useFirebaseAuth = () => {
         dispatch(login({ uid, email, displayName, photoURL }))
     }
 
-    const RegisteringUserWithEmailPassword = async ({
+    const registeringUserWithEmailPassword = async ({
         email,
         password,
         displayName,
@@ -53,7 +51,7 @@ export const useFirebaseAuth = () => {
     }
 
     // Autentication with Google
-    const GoogleSignIn = async () => {
+    const googleSignIn = async () => {
         dispatch(checkingCredentials())
         const response = await singInWithGoogle()
 
@@ -68,18 +66,6 @@ export const useFirebaseAuth = () => {
         dispatch(logout())
     }
 
-    const checkAuth = () => {
-      onAuthStateChanged(FirebaseAuth, async (user) => {
-          
-          // Not authenticated
-          if (!user) return dispatch(logout())
-
-          // Authenticated
-          const { uid, displayName, email, photoURL } = user
-          dispatch(login({ uid, displayName, email, photoURL }))
-      })
-  }
-
     return {
         // Properties
         status,
@@ -90,9 +76,8 @@ export const useFirebaseAuth = () => {
         errorMessage,
         // Functions
         loginWithEmailPassword,
-        RegisteringUserWithEmailPassword,
-        GoogleSignIn,
+        registeringUserWithEmailPassword,
+        googleSignIn,
         firebaseLogout,
-        checkAuth
     }
 }

@@ -32,8 +32,7 @@ export const LoginPageHook = () => {
         errorMessage,
         // Functions
         loginWithEmailPassword,
-
-        GoogleSignIn,
+        googleSignIn,
     } = useFirebaseAuth()
 
     // Functions // Usage of useMemo to not change it every time the form changes.
@@ -47,7 +46,7 @@ export const LoginPageHook = () => {
 
     const onGoogleSignIn = (event) => {
         event.preventDefault()
-        GoogleSignIn()
+        googleSignIn()
     }
 
     return (
