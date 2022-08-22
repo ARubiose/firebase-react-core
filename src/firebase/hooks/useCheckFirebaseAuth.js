@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { FirebaseAuth } from '../config'
-import { login, logout } from '../../store/auth'
-import { startLoadingNotes } from '../../store/slices/journal'
+import { login, logout } from '../authStore/authSliceHook'
 
-export const useCheckAuth = () => {
-    const { status } = useSelector((state) => state.auth)
+export const useCheckFirebaseAuth = () => {
+    const { status } = useSelector((state) => state.authHook)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -20,7 +19,6 @@ export const useCheckAuth = () => {
             // Authenticated
             const { uid, displayName, email, photoURL } = user
             dispatch(login({ uid, displayName, email, photoURL }))
-            dispatch(startLoadingNotes())
         })
     }, [])
 

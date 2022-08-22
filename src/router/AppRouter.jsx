@@ -4,30 +4,26 @@ import { AuthRoutes } from '../auth/routes/AuthRoutes'
 import { JournalRoutes } from '../journal/routes/JournalRoutes'
 
 import { CheckingAuth } from '../ui'
-import { useCheckAuth } from '../firebase/hooks/useCheckAuth'
+import { useCheckFirebaseAuth } from '../firebase/hooks/useCheckFirebaseAuth'
 import { statusEnum } from '../store/auth'
 
 export const AppRouter = () => {
-
-    const { status } = useCheckAuth()
+    const { status } = useCheckFirebaseAuth()
 
     // Auth Loading screen
-    if (status === statusEnum.checkingAuthentication) 
-        return <CheckingAuth/>
-                
+    if (status === statusEnum.checkingAuthentication) return <CheckingAuth />
+
     return (
         <Routes>
-
             {/* Authentication and Application routes */}
-            {
-                (status === statusEnum.authenticated)
-                 ? <Route path="/*" element={<JournalRoutes />} />
-                 : <Route path="/auth/*" element={<AuthRoutes />} />
-            }
+            {status === statusEnum.authenticated ? (
+                <Route path="/*" element={<JournalRoutes />} />
+            ) : (
+                <Route path="/auth/*" element={<AuthRoutes />} />
+            )}
 
             {/* Default route */}
-            <Route path='/*' element={ <Navigate to='/auth/login' /> }/>
-                                                    
-        </Routes>  
+            <Route path="/*" element={<Navigate to="/auth/loginHook" />} />
+        </Routes>
     )
 }

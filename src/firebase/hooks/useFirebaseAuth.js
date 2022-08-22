@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux'
+
 // Firebase support
 import {
     singInWithGoogle,
@@ -6,12 +8,22 @@ import {
     logoutFromFirebase,
 } from '../../firebase/providers'
 
-import { login, logout, checkingCredentials } from './'
+// Store actions
+import { login, logout, checkingCredentials } from '../authStore/authSliceHook'
 
-// Authentication with email and password
-export const startLoginWithEmailPassword = ({ email, password }) => {
-    return async (dispatch) => {
+/**
+ * Basic hook for Firebase-based authentication
+ * @returns
+ */
+export const useFirebaseAuth = () => {
+    const dispatch = useDispatch()
+    const { status, uid, email, displayName, photoURL, errorMessage } =
+        useSelector((state) => state.authHook)
+
+    // Authentication with email and password
+    const loginWithEmailPassword = async ({ email, password }) => {
         dispatch(checkingCredentials())
+
         const { ok, uid, displayName, photoURL, errorMessage } =
             await loginUserWithEmailPassword({ email, password })
 
@@ -19,14 +31,12 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 
         dispatch(login({ uid, email, displayName, photoURL }))
     }
-}
 
-export const startRegisteringUserWithEmailPassword = ({
-    email,
-    password,
-    displayName,
-}) => {
-    return async (dispatch) => {
+    const registeringUserWithEmailPassword = async ({
+        email,
+        password,
+        displayName,
+    }) => {
         dispatch(checkingCredentials())
         const { ok, uid, photoURL, errorMessage } =
             await registerUserWithEmailPassword({
@@ -39,11 +49,9 @@ export const startRegisteringUserWithEmailPassword = ({
 
         dispatch(login({ uid, displayName, email, photoURL }))
     }
-}
 
-// Authentication with Google
-export const startGoogleSignIn = () => {
-    return async (dispatch) => {
+    // Autentication with Google
+    const googleSignIn = async () => {
         dispatch(checkingCredentials())
         const response = await singInWithGoogle()
 
@@ -51,11 +59,25 @@ export const startGoogleSignIn = () => {
 
         dispatch(login(response))
     }
-}
 
-export const startLogout = () => {
-    return async (dispatch) => {
+    // General Authentication functions
+    const firebaseLogout = async () => {
         await logoutFromFirebase()
         dispatch(logout())
+    }
+
+    return {
+        // Properties
+        status,
+        uid,
+        email,
+        displayName,
+        photoURL,
+        errorMessage,
+        // Functions
+        loginWithEmailPassword,
+        registeringUserWithEmailPassword,
+        googleSignIn,
+        firebaseLogout,
     }
 }

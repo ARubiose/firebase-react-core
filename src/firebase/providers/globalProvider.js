@@ -1,5 +1,5 @@
 import { FirebaseAuth } from "../config"
 
-export const logoutFromDB = async ( ) =>{
+export const logoutFromFirebase = async ( ) =>{
     return await FirebaseAuth.signOut()
 }
