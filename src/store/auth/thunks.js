@@ -1,9 +1,9 @@
 // Firebase support
 import {
-    logoutFromDB,
     singInWithGoogle,
     loginUserWithEmailPassword,
     registerUserWithEmailPassword,
+    logoutFromFirebase,
 } from '../../firebase/providers'
 
 import { login, logout, checkingCredentials } from './'
@@ -55,7 +55,7 @@ export const startGoogleSignIn = () => {
 
 export const startLogout = () => {
     return async (dispatch) => {
-        await logoutFromDB()
+        await logoutFromFirebase()
         dispatch(logout())
     }
 }
