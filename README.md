@@ -1,6 +1,8 @@
 # firebase-react-core
 React core for firebase backend.
 
+Check the documentation to use the Firebase Hook in tis [readme](./src/firebase/README.md)
+
 Usage idea
 =====
 1. Create an empty repository on your github (or any cloud repository hosting).
