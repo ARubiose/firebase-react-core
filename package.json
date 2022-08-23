@@ -9,6 +9,10 @@
     "preview": "vite preview",
     "test": "jest --watchAll"
   },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/ARubiose/firebase-react-core"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",

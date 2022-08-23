@@ -139,6 +139,7 @@ export const statusEnum = {
 **Now you are good to use this Hook!**
 
 ### Next Steps
+  * Add tests!!
   * Make it a package
   * Support for firestore
 
